@@ -1,16 +1,18 @@
 adresse_id,adresse_personne_id,adresse_oeuvre_id,adresse_date,adresse_commune,adresse_arrondissement,adresse_rue,adresse_longitude,adresse_latitude
-1,1,,1920,Paris,16,1 rue Jacques-Offenbach,2.2726722,48.8562669
-2,2,,1920,Paris,16,11 bis av. du Colonel-Bonnet,2.277672,48.8559354
-3,4,,1924,Clamart,,83 rue du Moulin de Pierre,2.26696,48.80978
-4,5,,1925,Paris,19,8 rue Rouvet,2.384205,48.893741
+1,1,1,1920,Paris,16,1 rue Jacques-Offenbach,2.2726722,48.8562669
+2,2,2,1920,Paris,16,11 bis av. du Colonel-Bonnet,2.277672,48.8559354
+3,4,4,1924,Clamart,,83 rue du Moulin de Pierre,2.26696,48.80978
+4,5,5,1925,Paris,19,8 rue Rouvet,2.384205,48.893741
 5,5,,1927,Meudon,,2 av. du Bois,2.238527,48.8051876
-6,5,,1928,Meudon,,31 bd Verd de Saint-Julien,2.232388,48.816265
-7,6,,1926,Paris,12,14 rue Lamblardie,2.397478,48.840412
-8,7,,1925,Meudon,,28 rue Alexandre Guilmant,2.237956,48.816097
-9,8,,1932,Paris,16,4 Square Raynouard,2.282926,48.857319
-10,10,,1937,Paris,16,59 rue Boileau ,2.263105,48.842943
-11,11,11,1933,Paris,16,110 rue Thiers,,
-12,12,,1925,Paris,6,54 rue d'Assas,,
-13,13,13,1930,Paris,1,72 quai des Orfèvres,,
-14,14,14,1927,Paris,6,4 rue Princesse,,
-15,15,,,,,,,
+6,5,5,1928,Meudon,,31 bd Verd de Saint-Julien,2.232388,48.816265
+7,6,6,1926,Paris,12,14 rue Lamblardie,2.397478,48.840412
+8,7,7,1925,Meudon,,28 rue Alexandre Guilmant,2.237956,48.816097
+9,8,8,1932,Paris,16,4 Square Raynouard,2.282926,48.857319
+10,10,10,1937,Paris,16,59 rue Boileau ,2.263105,48.842943
+11,11,11,1933,Paris,16,110 rue Thiers,2.251476,48.832651
+12,12,12,1930,Paris,5,6 Rue de l'Abbé de l'Épée,2.341979,48.843318
+13,13,13,1930,Paris,1,72 quai des Orfèvres,2.341561,48.856749
+14,14,14,1927,Paris,6,4 rue Princesse,2.334427,48.8525434
+15,15,15,1929,Paris,14,9 bd. Edgar Quinet,2.3251184,48.8408211
+16,16,16,1935,Paris,14,123 rue du Chateau,2.3202245,48.8352101
+17,17,17,1929,Paris,5,3 Rue de l'Abbé de l'Épée,2.342288,48.843055
