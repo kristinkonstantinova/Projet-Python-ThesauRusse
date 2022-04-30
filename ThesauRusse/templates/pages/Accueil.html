@@ -1,6 +1,23 @@
 {% extends "conteneur.html" %}
+{% block titre %}
+ThesauRusse
+{%endblock%}
+
 {% block corps %}
-<h1>Bienvenue !</h1>
+<h1>Bienvenue sur le ThesauRusse!</h1>
+<p>Le projet vise à blablabla feergqergqregrqegren;j;kjn;kjenrfq;krejnf</p>
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand" href="{{ url_for('accueil') }}">Chercher</a>
+    <form action="recherche"
+          class="form-inline">
+      <input class="form-control" type="search" name="keyword" placeholder="Recherche rapide" aria-label="Recherche">
+      <button class="btn btn-outline-info" type="submit">Rechercher</button>
+    </form>
+</nav>
+
+<img src="static/img/photo Accueil.jpg"/> <!--la photo pour la page d'accueil-->
 <p>
     {% if personnes %}
         Il y a {{personnes|length}} enregistrés :

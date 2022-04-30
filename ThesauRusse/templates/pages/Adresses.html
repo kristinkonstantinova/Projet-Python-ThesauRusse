@@ -1,0 +1,12 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+<li>{{adresses.adresse_date}}</li>
+<li>{{adresses.adresse_rue}}</li>
+<li>{{adresses.adresse_commune}}</li>
+{%if adresses.adresse_arrondissement%}
+<li>{{adresses.adresse_arrondissement}}</li>
+{%endif%}
+{%endblock%}
+{%block titre%}
+fghf
+{%endblock%}

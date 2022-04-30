@@ -1,0 +1,34 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+<h1>Personnes</h1>
+{%for resultat in resultats_personne%}
+<li>
+    <a href="/personnes/{{resultat.personne_id}}">
+    {{resultat.personne_nom}}, {{resultat.personne_prenom}}, {{resultat.personne_date_naissance}}, {{resultat.personne_date_mort}}
+</a>
+</li>
+{%endfor%}
+<h1>Oeuvres</h1>
+{%for resultat in resultats_oeuvre%}
+<li>
+    <a href="/oeuvres/{{resultat.oeuvre_id}}">
+    {{resultat.oeuvre_date}}, {{resultat.oeuvre_titre_russe}}, {{resultat.oeuvre_titre_francais}}
+</a>
+</li>
+{%endfor%}
+<h1>Adresses</h1>
+{%for resultat in resultats_adresse%}
+<li>
+    <a href="/adresses/{{resultat.adresse_id}}">
+    {%if resultat.adresse_arrondissement%}
+    {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_arrondissement}}, {{resultat.adresse_date}}
+    {%else%}
+    {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_date}}
+    {%endif%}
+       </a>
+</li>
+{%endfor%}
+{%endblock%}
+{%block titre%}
+{{resultats_personne|length + resultats_oeuvre|length + resultats_adresse|length}} resultats
+{%endblock%}
