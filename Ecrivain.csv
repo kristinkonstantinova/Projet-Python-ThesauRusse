@@ -1,4 +1,4 @@
-personne_id,personne_adresse_id,personne_oeuvre_id,personne_nom,personne_prenom,personne_date_naissance,personne_date_mort
+ecrivain_id,ecrivain_adresse_id,ecrivain_oeuvre_id,ecrivain_nom,ecrivain_prenom,ecrivain_date_naissance,ecrivain_date_mort
 1,1,1,Bounine,Ivan,1870,1953
 2,2,2,Merejkovski,Dimitri,1865,1941
 3,2,3,Hippius,Zinaïda,1869,1945

@@ -1,0 +1,74 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+<div>
+    <h1>
+        {{ecrivain.ecrivain_prenom}}
+        {{ecrivain.ecrivain_nom}}
+    </h1>
+    <div class="suppression">
+        <form action="{{ url_for('supprimer_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
+            <div class="column">
+                <input class="theInputs" type="submit" value="Supprimer">
+            </div>
+        </form>
+    </div>
+</div>
+
+<h2>
+    Année de naissance
+</h2>
+
+<ul>
+    <li>
+        {{ ecrivain.ecrivain_date_naissance }}
+    </li>
+</ul>
+
+<h2>
+    Année du décès
+</h2>
+
+<ul>
+    <li>
+        {{ ecrivain.ecrivain_date_mort }}
+    </li>
+</ul>
+
+{% if ecrivain.adresses %}
+<h2>
+    Adresses
+</h2>
+<ul>
+    {% for adresse in ecrivain.adresses %}
+    <li>
+        <a href="{{ url_for('adresse', adresse_id=adresse.adresse_id) }}">
+            {{ adresse.adresse_rue }}, {{ adresse.adresse_commune }}
+            {% if adresse.adresse_arrondissement %}
+            {{ adresse.adresse_arrondissement }}
+            {% endif %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if ecrivain.adresses %}
+<h2>
+    Oeuvres
+</h2>
+<ul>
+    {% for oeuvre in ecrivain.oeuvres %}
+    <li>
+        <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
+            {{ oeuvre.oeuvre_titre_russe }},
+            {{ oeuvre.oeuvre_titre_francais }}
+            ({{ oeuvre.oeuvre_titre_francais }})
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{%endblock%}
+{%block titre%}
+{{ecrivain.ecrivain_prenom}} {{ecrivain.ecrivain_nom}}
+{%endblock%}

@@ -1,0 +1,20 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+
+<form>
+    <h4>Titre Francais</h4>
+    <label for="francais"></label><br>
+    <input type="text" id="francais" name="Francais"<br>
+    <h4>Titre Russe</h4>
+    <label for="russe"></label><br>
+    <input type="text" id="russe" name="Russe"<br>
+    <h4>Date</h4>
+    <label for="date"></label><br>
+    <input type="number" min="1800" max="1950" id="date" name="Date"<br>
+
+</form>
+{%endblock%}
+
+{%block titre%}
+Ajouter un écrivain
+{%endblock%}

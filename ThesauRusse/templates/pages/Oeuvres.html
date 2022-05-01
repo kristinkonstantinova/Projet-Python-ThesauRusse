@@ -1,9 +1,19 @@
 {% extends "conteneur.html" %}
 {%block corps%}
-<li>{{oeuvres.oeuvre_date}}</li>
-<li>{{oeuvres.oeuvre_titre_russe}}</li>
-<li>{{oeuvres.oeuvre_titre_francais}}</li>
+<h1>Oeuvres</h1>
+<h2>Liste</h2>
+<ul>
+    {% for oeuvre in oeuvres %}
+    <li>
+        <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
+            {{ oeuvre.oeuvre_titre_russe }}
+            , {{ oeuvre.oeuvre_titre_francais }}
+            ({{oeuvre.oeuvre_date}})
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 {%endblock%}
 {%block titre%}
-fghf
+Oeuvres
 {%endblock%}

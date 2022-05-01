@@ -1,12 +1,20 @@
 {% extends "conteneur.html" %}
 {%block corps%}
-<li>{{adresses.adresse_date}}</li>
-<li>{{adresses.adresse_rue}}</li>
-<li>{{adresses.adresse_commune}}</li>
-{%if adresses.adresse_arrondissement%}
-<li>{{adresses.adresse_arrondissement}}</li>
-{%endif%}
+<h1>Adresse</h1>
+<h2>Liste</h2>
+<ul>
+    {% for adresse in adresses %}
+    <li>
+        <a href="{{ url_for('adresse', adresse_id=adresse.adresse_id) }}">
+            {{adresse.adresse_rue}}, {{adresse.adresse_commune}}
+            {%if adresse.adresse_arrondissement%}
+            {{adresse.adresse_arrondissement}}
+            {%endif%}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 {%endblock%}
 {%block titre%}
-fghf
+Adresses
 {%endblock%}

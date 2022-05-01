@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-<meta charset="UTF-8">
-<head>
-    <title>ThesauRusse {%block titre %}{%endblock%}</title>
-    <style>
-     html * {
-         font-family: sans-serif;
-     }
-
-     h1 {
-         font-weight: bolder;
-     }
-    </style>
+    <meta charset="UTF-8">
+    <head>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <title>{%block titre %}{%endblock%}</title>
     </head>
     <body>
-        <div>{% block corps%}{%endblock%}</div>
+        <div class="page">
+            <div class="navbar">
+                <ul class="nav-list">
+                    <li class="nav-bouton">
+                        <a class="nav-lien" href="{{ url_for('accueil') }}">
+                            Accueil
+                        </a>
+                    </li>
+                    <li class="nav-bouton">
+                        <a class="nav-lien" href="{{ url_for('adresses') }}">
+                            Adresses
+                        </a>
+                    </li>
+                    <li class="nav-bouton">
+                        <a class="nav-lien" href="{{ url_for('ecrivains') }} ">
+                            Écrivains
+                        </a>
+                    </li>
+                    <li class="nav-bouton">
+                        <a class="nav-lien" href="{{ url_for('oeuvres') }}">
+                            Oeuvres
+                        </a>
+                    </li>
+                    <li class="nav-bouton">
+                        <a class="nav-lien" href="mailto:kristina.konstantinova@chartes.psl.eu">
+                            Contact
+                        </a>
+                    </li>
+                    <li class="recherche">
+                        <form action="recherche"
+                              class="form-inline">
+                            <input type="search" name="keyword" placeholder="Recherche rapide">
+                            <button type="submit">Rechercher</button>
+                        </form>
+                        </nav>
+                    </li>
+                </ul>
+            </div>
+            <div class="contenu">{% block corps%}{%endblock%}</div>
+        </div>
     </body>
 </html>

@@ -1,4 +1,4 @@
-adresse_id,adresse_personne_id,adresse_oeuvre_id,adresse_date,adresse_commune,adresse_arrondissement,adresse_rue,adresse_longitude,adresse_latitude
+adresse_id,adresse_ecrivain_id,adresse_oeuvre_id,adresse_date,adresse_commune,adresse_arrondissement,adresse_rue,adresse_longitude,adresse_latitude
 1,1,1,1920,Paris,16,1 rue Jacques-Offenbach,2.2726722,48.8562669
 2,2,2,1920,Paris,16,11 bis av. du Colonel-Bonnet,2.277672,48.8559354
 3,4,4,1924,Clamart,,83 rue du Moulin de Pierre,2.26696,48.80978

@@ -3,15 +3,15 @@ import flask_migrate
 import os
 from ..app import app, db
 
-personne_adresses_table = db.Table(
-    'personne_adresse', db.Model.metadata,
-    db.Column('personne_id', db.ForeignKey('Personne.personne_id'), primary_key=True),
+ecrivain_adresses_table = db.Table(
+    'ecrivain_adresse', db.Model.metadata,
+    db.Column('ecrivain_id', db.ForeignKey('Ecrivain.ecrivain_id'), primary_key=True),
     db.Column('adresse_id', db.ForeignKey('Adresse.adresse_id'), primary_key=True)
 )
 
-personne_oeuvre_table = db.Table(
-    'personne_oeuvre', db.Model.metadata,
-    db.Column('personne_id', db.ForeignKey('Personne.personne_id'), primary_key=True),
+ecrivain_oeuvre_table = db.Table(
+    'ecrivain_oeuvre', db.Model.metadata,
+    db.Column('ecrivain_id', db.ForeignKey('Ecrivain.ecrivain_id'), primary_key=True),
     db.Column('oeuvre_id', db.ForeignKey('Oeuvre.oeuvre_id'), primary_key=True)
 )
 
@@ -21,15 +21,15 @@ oeuvre_adresses_table = db.Table(
     db.Column('adresse_id', db.ForeignKey('Adresse.adresse_id'), primary_key=True)
 )
 
-class Personne(db.Model):
-    __tablename__ = "Personne"
-    personne_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
-    personne_nom = db.Column(db.Text, nullable=False)
-    personne_prenom = db.Column(db.Text, nullable=False)
-    personne_date_naissance = db.Column(db.Integer, nullable=False)
-    personne_date_mort= db.Column(db.Integer, nullable=False)
-    adresses = db.relationship("Adresse", secondary=personne_adresses_table, backref=db.backref('personnes'))
-    oeuvres = db.relationship("Oeuvre", secondary=personne_oeuvre_table, backref=db.backref('personnes'))
+class Ecrivain(db.Model):
+    __tablename__ = "Ecrivain"
+    ecrivain_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
+    ecrivain_nom = db.Column(db.Text, nullable=False)
+    ecrivain_prenom = db.Column(db.Text, nullable=False)
+    ecrivain_date_naissance = db.Column(db.Integer, nullable=False)
+    ecrivain_date_mort= db.Column(db.Integer, nullable=False)
+    adresses = db.relationship("Adresse", secondary=ecrivain_adresses_table, backref=db.backref('ecrivains'))
+    oeuvres = db.relationship("Oeuvre", secondary=ecrivain_oeuvre_table, backref=db.backref('ecrivains'))
 
 class Adresse(db.Model):
     __tablename__ = "Adresse"
@@ -83,7 +83,7 @@ def convertir_float(valeur):
 def convertir_adresse(adresse):
     """
     id
-    personne_id
+    ecrivain_id
     oeuvre_id
     date
     commune
@@ -103,7 +103,7 @@ def convertir_adresse(adresse):
     )
 
 
-def convertir_personne(personne):
+def convertir_ecrivain(ecrivain):
     """
     id
     adresse_id
@@ -113,19 +113,19 @@ def convertir_personne(personne):
     date_naissance
     date_mort
     """
-    return Personne(
-        personne_id=convertir_int(personne[0]),
-        personne_nom=personne[3],
-        personne_prenom=personne[4],
-        personne_date_naissance=convertir_int(personne[5]),
-        personne_date_mort=convertir_int(personne[6])
+    return Ecrivain(
+        ecrivain_id=convertir_int(ecrivain[0]),
+        ecrivain_nom=ecrivain[3],
+        ecrivain_prenom=ecrivain[4],
+        ecrivain_date_naissance=convertir_int(ecrivain[5]),
+        ecrivain_date_mort=convertir_int(ecrivain[6])
     )
 
 
 def convertir_oeuvre(oeuvre):
     """
     id
-    personne_id
+    ecrivain_id
     date
     titre_russe
     titre_francais
@@ -139,24 +139,45 @@ def convertir_oeuvre(oeuvre):
     )
 
 
-def ajout_lien_personne_oeuvre(db, personne_id, oeuvre_id):
-    personne = Personne.query.get(personne_id)
+def ajout_lien_ecrivain_oeuvre(db, ecrivain_id, oeuvre_id):
+    ecrivain = Ecrivain.query.get(ecrivain_id)
     oeuvre = Oeuvre.query.get(oeuvre_id)
-    personne.oeuvres.append(oeuvre)
-    db.session.add(personne)
+    ecrivain.oeuvres.append(oeuvre)
+    db.session.add(ecrivain)
 
 
-def ajout_lien_personne_adresse(db, personne_id, adresse_id):
-    personne = Personne.query.get(personne_id)
+def ajout_lien_ecrivain_adresse(db, ecrivain_id, adresse_id):
+    ecrivain = Ecrivain.query.get(ecrivain_id)
     adresse = Adresse.query.get(adresse_id)
-    personne.adresses.append(adresse)
-    db.session.add(personne)
+    ecrivain.adresses.append(adresse)
+    db.session.add(ecrivain)
+
+
+def ajout_lien_adresse_oeuvre(db, adresse_id, oeuvre_id):
+    adresse = Adresse.query.get(adresse_id)
+    oeuvre = Oeuvre.query.get(oeuvre_id)
+    adresse.oeuvres.append(oeuvre)
+    db.session.add(adresse)
+
+
+def ajout_lien_adresse_ecrivain(db, adresse_id, ecrivain_id):
+    adresse = Adresse.query.get(adresse_id)
+    ecrivain = Ecrivain.query.get(ecrivain_id)
+    adresse.ecrivains.append(ecrivain)
+    db.session.add(adresse)
 
 
 def ajout_lien_oeuvre_adresse(db, oeuvre_id, adresse_id):
     oeuvre = Oeuvre.query.get(oeuvre_id)
     adresse = Adresse.query.get(adresse_id)
     oeuvre.adresses.append(adresse)
+    db.session.add(oeuvre)
+
+
+def ajout_lien_oeuvre_ecrivain(db, oeuvre_id, ecrivain_id):
+    oeuvre = Oeuvre.query.get(oeuvre_id)
+    ecrivain = Ecrivain.query.get(ecrivain_id)
+    oeuvre.ecrivains.append(ecrivain)
     db.session.add(oeuvre)
 
 
@@ -174,23 +195,31 @@ def initialiser_base(app, db):
 
         adresses_csv = lire_lignes("Adresse.csv")
         adresses = [convertir_adresse(a) for a in adresses_csv]
-        personnes_csv = lire_lignes("Personne.csv")
-        personnes = [convertir_personne(a) for a in personnes_csv]
+        ecrivains_csv = lire_lignes("Ecrivain.csv")
+        ecrivains = [convertir_ecrivain(a) for a in ecrivains_csv]
         oeuvres_csv = lire_lignes("Oeuvre.csv")
         oeuvres = [convertir_oeuvre(a) for a in oeuvres_csv]
 
-        for objet in adresses + personnes + oeuvres:
+        for objet in adresses + ecrivains + oeuvres:
             db.session.add(objet)
 
-        for personne in personnes_csv:
-            if personne[1]:
-                ajout_lien_personne_adresse(db, personne[0], personne[1])
-            if personne[2]:
-                ajout_lien_personne_oeuvre(db, personne[0], personne[2])
+        for ecrivain in ecrivains_csv:
+            if ecrivain[1]:
+                ajout_lien_ecrivain_adresse(db, ecrivain[0], ecrivain[1])
+            if ecrivain[2]:
+                ajout_lien_ecrivain_oeuvre(db, ecrivain[0], ecrivain[2])
 
         for oeuvre in oeuvres_csv:
             if oeuvre[5]:
                 ajout_lien_oeuvre_adresse(db, oeuvre[0], oeuvre[5])
+            if oeuvre[1]:
+                ajout_lien_oeuvre_ecrivain(db, oeuvre[0], oeuvre[1])
+
+        for adresse in adresses_csv:
+            if adresse[1]:
+                ajout_lien_adresse_ecrivain(db, adresse[0], adresse[1])
+            if adresse[2]:
+                ajout_lien_adresse_oeuvre(db, adresse[0], adresse[2])
 
         db.session.commit()
 

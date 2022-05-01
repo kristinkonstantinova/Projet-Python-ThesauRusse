@@ -1,0 +1,65 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+<h1>
+    Oeuvre
+</h1>
+
+<h2>
+    Informations
+</h2>
+
+<h3>
+    Titre Russe
+</h3>
+<ul>
+<li class="info">
+    {{oeuvre.oeuvre_titre_russe}}
+</li>
+</ul>
+
+<h3>
+    Titre Français
+</h3>
+<ul>
+<li class="info">
+    {{oeuvre.oeuvre_titre_francais}}
+</li>
+</ul>
+
+<h3>
+    Date
+</h3>
+<ul>
+<li class="info" style="font-style: normal;">
+    {{oeuvre.oeuvre_date}}
+</li>
+</ul>
+
+{% if oeuvre.ecrivains %}
+<h2>Écrivains</h2>
+<ul>
+    {% for ecrivain in oeuvre.ecrivains %}
+    <li><a href="{{url_for('ecrivain', ecrivain_id=ecrivain.ecrivain_id)}}">{{ecrivain.ecrivain_prenom}} {{ecrivain.ecrivain_nom}}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if oeuvre.adresses %}
+<h2>Adresses</h2>
+<ul>
+    {% for adresse in oeuvre.adresses %}
+    <li>
+        <a href="{{url_for('adresse', adresse_id=adresse.adresse_id)}}">
+            {{adresse.adresse_rue}}, {{adresse.adresse_commune}}
+            {% if adresse.adresse_arrondissement %}
+            {{adresse.adresse_arrondissement}}
+            {%endif%}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{%endblock%}
+{%block titre%}
+{{ oeuvre.oeuvre_titre_russe }}, {{ oeuvre.oeuvre_titre_francais }}
+{%endblock%}

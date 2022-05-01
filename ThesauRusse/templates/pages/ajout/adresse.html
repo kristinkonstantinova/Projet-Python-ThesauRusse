@@ -1,0 +1,20 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+
+<form>
+    <h4>Rue</h4>
+    <label for="rue"></label><br>
+    <input type="text" id="rue" name="Rue"<br>
+    <h4>Ville</h4>
+    <label for="ville"></label><br>
+    <input type="text" id="ville" name="Ville"<br>
+    <h4>Arrondissement</h4>
+    <label for="arrondissement"></label><br>
+    <input type="number" min="1" max="20" id="arrondissement" name="Arrondissement"<br>
+
+</form>
+{%endblock%}
+
+{%block titre%}
+Ajouter un écrivain
+{%endblock%}

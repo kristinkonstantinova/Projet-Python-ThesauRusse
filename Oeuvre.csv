@@ -1,18 +1,18 @@
 oeuvre_id,oeuvre_personne_id,oeuvre_date,oeuvre_titre_russe,oeuvre_titre_francais,oeuvre_adresse_id
-1,1,1946,Temnyje alleji,Les Allées sombres,1
-2,2,1926,Messija,Le Messie,2
-3,3,1925,Zhivyje liza,Les Visages Vivants,2
-4,4,1924,Novoje Srednevekovje,Le nouveau Moyen Âge,3
-5,5,1928,Posle Rossiji,Après la Russie,6
-6,6,1939,Nekropol,Nécropole,8
-7,7,1935,Akkompaniatorsha,L'Accompagnatrice,8
-8,8,1938,Raspad Atoma,La Désagrégation de l'atome,9
-9,9,1939,Zerkalo,Le Miroir,9
-10,10,1940,Podlinnaja Zhizn Sebastjana Najta ,La Vraie Vie de Sebastian Knight,10
-11,11,1935,Dom v Passi,Une Maison à Passy,11
-12,12,1934,Priblizhenija,Rapprochements,12
-13,13,1931,Apollon Bezobrazov,Apollon Bezobrazov,13
-14,14,1929,Vecher u Kler,Une soirée avec Claire,14
-15,15,1939,Na Zapade,À l'Ouest,15
-16,16,1939,Okna na Sever,Fenêtre sur le Nord,16
-17,17,1929,Malchiki i devochki,Les garçons et les filles,17
+1,1,1946,Темные аллеи,Les Allées sombres,1
+2,2,1926,Мессия,Le Messie,2
+3,3,1925,Живые лица,Les Visages Vivants,2
+4,4,1924,Новое Средневековье,Le nouveau Moyen Âge,3
+5,5,1928,После России,Après la Russie,6
+6,6,1939,Некрополь,Nécropole,8
+7,7,1935,Аккомпаниаторша,L'Accompagnatrice,8
+8,8,1938,Распад атома,La Désagrégation de l'atome,9
+9,9,1939,Зеркало,Le Miroir,9
+10,10,1940,Подлинная жизнь Себастьяна Найта,La Vraie Vie de Sebastian Knight,10
+11,11,1935,Дом в Пасси,Une Maison à Passy,11
+12,12,1934,Приближенья,Rapprochements,12
+13,13,1931,Аполлон Безобразов,Apollon Bezobrazov,13
+14,14,1929,Вечер у Клэр,Une soirée avec Claire,14
+15,15,1939,На Западе,À l'Ouest,15
+16,16,1939,Окна на север,Fenêtre sur le Nord,16
+17,17,1929,Мальчики и девочки,Les garçons et les filles,17

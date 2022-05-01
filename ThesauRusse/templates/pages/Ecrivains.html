@@ -1,0 +1,20 @@
+{% extends "conteneur.html" %}
+{%block corps%}
+<h1>Écrivains</h1>
+<h2>Liste</h2>
+<ul>
+    {% for ecrivain in ecrivains %}
+    <li>
+        <a href="{{ url_for('ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}">
+            {{ecrivain.ecrivain_prenom}}
+            {{ecrivain.ecrivain_nom}}
+            ({{ecrivain.ecrivain_date_naissance}}
+            - {{ecrivain.ecrivain_date_mort}})
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{%endblock%}
+{%block titre%}
+{{ecrivains.ecrivain_prenom}} {{ecrivains.ecrivain_nom}}
+{%endblock%}

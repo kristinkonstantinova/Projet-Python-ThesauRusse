@@ -1,34 +1,42 @@
 {% extends "conteneur.html" %}
 {%block corps%}
-<h1>Personnes</h1>
-{%for resultat in resultats_personne%}
+<h1>Résultats de la recherche</h1>
+{% if resultats_ecrivain %}
+<h2>Écrivains</h2>
+{%for resultat in resultats_ecrivain%}
 <li>
-    <a href="/personnes/{{resultat.personne_id}}">
-    {{resultat.personne_nom}}, {{resultat.personne_prenom}}, {{resultat.personne_date_naissance}}, {{resultat.personne_date_mort}}
-</a>
+    <a href="{{ url_for('ecrivain', resultat.ecrivain_id) }}">
+        {{resultat.ecrivain_prenom}} {{resultat.ecrivain_nom}} ({{resultat.ecrivain_date_naissance}} - {{resultat.ecrivain_date_mort}})
+    </a>
 </li>
 {%endfor%}
-<h1>Oeuvres</h1>
+{%endif%}
+{% if resultats_oeuvre %}
+<h2>Oeuvres</h2>
 {%for resultat in resultats_oeuvre%}
 <li>
-    <a href="/oeuvres/{{resultat.oeuvre_id}}">
-    {{resultat.oeuvre_date}}, {{resultat.oeuvre_titre_russe}}, {{resultat.oeuvre_titre_francais}}
-</a>
+    <a href="{{ url_for('oeuvre', resultat.oeuvre_id) }}">
+        {{resultat.oeuvre_titre_russe}}, {{resultat.oeuvre_titre_francais}} ({{resultat.oeuvre_date}})
+    </a>
 </li>
 {%endfor%}
-<h1>Adresses</h1>
+{%endif%}
+{% if resultats_adresse %}
+<h2>Adresses</h2>
 {%for resultat in resultats_adresse%}
 <li>
-    <a href="/adresses/{{resultat.adresse_id}}">
-    {%if resultat.adresse_arrondissement%}
-    {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_arrondissement}}, {{resultat.adresse_date}}
-    {%else%}
-    {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_date}}
-    {%endif%}
-       </a>
+    <a href="{{ url_for('adresse', resultat.adresse_id) }}">
+        {%if resultat.adresse_arrondissement%}
+        {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_arrondissement}}, {{resultat.adresse_date}}
+        {%else%}
+        {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_date}}
+        {%endif%}
+    </a>
 </li>
 {%endfor%}
+{%endif%}
 {%endblock%}
 {%block titre%}
-{{resultats_personne|length + resultats_oeuvre|length + resultats_adresse|length}} resultats
+{% set nb_resultats = resultats_ecrivain|length + resultats_oeuvre|length + resultats_adresse|length %}
+{{ nb_resultats }} resultat{% if nb_resultats > 1 %}s{%endif%}
 {%endblock%}

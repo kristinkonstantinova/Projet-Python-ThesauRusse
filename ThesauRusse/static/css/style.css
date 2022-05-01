@@ -1,0 +1,141 @@
+html * {
+}
+
+button {
+    border: none;
+    display: inline-block;
+    color: midnightblue;
+    background-color: aliceblue;
+}
+
+input {
+    border: none;
+    display: inline-block;
+    color: midnightblue;
+    background-color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+    color: midnightblue;
+}
+
+h2, h3, h4 {
+    color: navy;
+}
+
+body {
+    font-family: Times New Roman;
+    background-color: rgba(245,255,255);
+}
+
+.navbar {
+    border: 2px;
+    border-color: black;
+    border-radius: 10px;
+    background: rgba(232, 243, 255);
+    color: rgba(44, 67, 92);
+    padding: 1px 1px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.nav-list {
+    font-family: sans-serif;
+    font-weight: bold;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0px;
+}
+
+.nav-bouton {
+    float: left;
+}
+
+.recherche {
+    float: right;
+    margin: 15px;
+}
+
+.nav-lien {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    border: 2px;
+    border-color: rgba(232, 243, 255);
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.nav-lien:hover {
+    text-weight: bold;
+    border-color: rgba(206, 219, 240);
+    background: rgba(218, 228, 245);
+}
+
+.description {
+    text-align: center;
+    margin: auto;
+    width: 75%;
+}
+
+.contenu {
+    color: rgba(28,59,92);
+    font-size: 18px;
+}
+
+.index {
+    align: center;
+    padding-left: 5%;
+    width: 90%;
+    align-content: center;
+    border: 1px solid black;
+}
+
+.table-index {
+    float: left;
+    width: 33%;
+    text-align: center;
+    align: center;
+}
+
+.info {
+    font-style: italic;
+}
+
+#formContainer{
+    width:40%;
+    margin:auto;
+}
+
+#formC{
+    width:100%;
+}
+
+.rows{
+    width:100%;
+    display:block;
+}
+
+.column{
+    width:100%;
+    display:inline-block;
+}
+
+.theLabels{
+    width:30%
+          float:left;
+}
+
+.theInputs{
+    width:60%;
+    float:right;
+    text-align: center;
+}
+
+.suppression {
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}

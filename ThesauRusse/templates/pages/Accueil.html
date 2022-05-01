@@ -4,30 +4,93 @@ ThesauRusse
 {%endblock%}
 
 {% block corps %}
-<h1>Bienvenue sur le ThesauRusse!</h1>
-<p>Le projet vise à blablabla feergqergqregrqegren;j;kjn;kjenrfq;krejnf</p>
+<div>
+    <h1>Bienvenue sur le ThesauRusse </h1>
+    <h2 style="text-align: center;">Le projet sur les écrivains russes à Paris</h2>
+</div>
+<div class="description">
+    <p>
+        Vous pourrez trouver ici les informations telles que l’endroit où ils
+        ont habité, quels œuvres ont été écrites à ces adresses et quand. Je me
+        suis concentrée en premier temps sur les années 1920-30 – la première
+        vague d’immigration russe dite blanche – et j’ai choisi 17 auteurs qui
+        me paraissent les plus représentatives pour cette période. Dans le
+        futur, je compte pouvoir compléter mes données avec plus de 100
+        ecrivains et élargir la carte à toute la France. Si vous voulez
+        contribuer au projet, n'hésitez pas à me contacter par mail à l’adresse:
+        <br>
+        <a href="mailto:kristina.konstantinova@chartes.psl.eu">
+            kristina.konstantinova@chartes.psl.eu
+        </a>
+        <br>
+        <br>
+        <b>Merci ! Спасибо !</b>
+    </p>
+</div>
 
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-    <a class="navbar-brand" href="{{ url_for('accueil') }}">Chercher</a>
-    <form action="recherche"
-          class="form-inline">
-      <input class="form-control" type="search" name="keyword" placeholder="Recherche rapide" aria-label="Recherche">
-      <button class="btn btn-outline-info" type="submit">Rechercher</button>
-    </form>
-</nav>
-
-<img src="static/img/Plan de Paris.jpg"/> <!--la photo pour la page d'accueil-->
-<p>
-    {% if personnes %}
-        Il y a {{personnes|length}} enregistrés :
-        <ul>
-            {% for personne in personnes %}
-                <li><a href="{{url_for('personne', personne_id=personne.personne_id)}}">{{personne.personne_nom}}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        La base de données est en cours de constitution
+<!-- <img src="static/img/Plan de Paris.jpg"/> -->
+<div class="index">
+    {% if adresses %}
+    <table class="table-index">
+        <tr>
+            <th>
+                Adresses
+            </th>
+        </tr>
+        {% for adresse in adresses %}
+        <tr>
+            <td>
+                <a href="{{ url_for('adresse', adresse_id=adresse.adresse_id) }}">
+                    {{ adresse.adresse_rue }}, {{ adresse.adresse_commune }}
+                    {% if adresse.adresse_arrondissement %}
+                    {{ adresse.adresse_arrondissement }}
+                    {% endif %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     {% endif %}
-</p>
+
+    {% if ecrivains %}
+    <table class="table-index">
+        <tr>
+            <th>
+                Écrivains
+            </th>
+        </tr>
+        {% for ecrivain in ecrivains %}
+        <tr>
+            <td>
+                <a href="{{ url_for('ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}">
+                    {{ ecrivain.ecrivain_prenom }} {{ ecrivain.ecrivain_nom }}
+                    ({{ ecrivain.ecrivain_date_naissance }}
+                    - {{ ecrivain.ecrivain_date_mort }})
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if oeuvres %}
+    <table class="table-index">
+        <tr>
+            <th>
+                Oeuvres
+            </th>
+        </tr>
+        {% for oeuvre in oeuvres %}
+        <tr>
+            <td>
+                <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
+                    {{ oeuvre.oeuvre_titre_russe }}, {{ oeuvre.oeuvre_titre_francais }}
+                    ({{ oeuvre.oeuvre_date }})
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
 {% endblock %}
