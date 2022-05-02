@@ -7,66 +7,69 @@
     </h1>
 </div>
 
-<img src="{{ image }}"></img>
+<img class="photo-ecrivain" src="{{ image }}"></img>
+
 <form class="suppression" action="{{ url_for('supprimer_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
     <div class="column">
         <input class="theInputs" type="submit" value="Supprimer">
     </div>
 </form>
 
-<h2>
-    Année de naissance
-</h2>
+<div class="informations">
+    <h2>
+        Année de naissance
+    </h2>
 
-<ul>
-    <li>
-        {{ ecrivain.ecrivain_date_naissance }}
-    </li>
-</ul>
+    <ul>
+        <li>
+            {{ ecrivain.ecrivain_date_naissance }}
+        </li>
+    </ul>
 
-<h2>
-    Année du décès
-</h2>
+    <h2>
+        Année du décès
+    </h2>
 
-<ul>
-    <li>
-        {{ ecrivain.ecrivain_date_mort }}
-    </li>
-</ul>
+    <ul>
+        <li>
+            {{ ecrivain.ecrivain_date_mort }}
+        </li>
+    </ul>
 
-{% if ecrivain.adresses %}
-<h2>
-    Adresses
-</h2>
-<ul>
-    {% for adresse in ecrivain.adresses %}
-    <li>
-        <a href="{{ url_for('adresse', adresse_id=adresse.adresse_id) }}">
-            {{ adresse.adresse_rue }}, {{ adresse.adresse_commune }}
-            {% if adresse.adresse_arrondissement %}
-            {{ adresse.adresse_arrondissement }}
-            {% endif %}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+    {% if ecrivain.adresses %}
+    <h2>
+        Adresses
+    </h2>
+    <ul>
+        {% for adresse in ecrivain.adresses %}
+        <li>
+            <a href="{{ url_for('adresse', adresse_id=adresse.adresse_id) }}">
+                {{ adresse.adresse_rue }}, {{ adresse.adresse_commune }}
+                {% if adresse.adresse_arrondissement %}
+                {{ adresse.adresse_arrondissement }}
+                {% endif %}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
-{% if ecrivain.adresses %}
-<h2>
-    Oeuvres
-</h2>
-<ul>
-    {% for oeuvre in ecrivain.oeuvres %}
-    <li>
-        <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
-            {{ oeuvre.oeuvre_titre_russe }},
-            {{ oeuvre.oeuvre_titre_francais }}
-            ({{ oeuvre.oeuvre_titre_francais }})
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+    {% if ecrivain.adresses %}
+    <h2>
+        Oeuvres
+    </h2>
+    <ul>
+        {% for oeuvre in ecrivain.oeuvres %}
+        <li>
+            <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
+                {{ oeuvre.oeuvre_titre_russe }},
+                {{ oeuvre.oeuvre_titre_francais }}
+                ({{ oeuvre.oeuvre_titre_francais }})
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endif %}
 {%endblock%}
 {%block titre%}
