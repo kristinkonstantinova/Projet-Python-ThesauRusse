@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li class="recherche">
-                        <form action="recherche"
+                        <form action="{{ url_for('recherche') }}"
                               class="form-inline">
                             <input type="search" name="keyword" placeholder="Recherche rapide">
                             <button type="submit">Rechercher</button>
