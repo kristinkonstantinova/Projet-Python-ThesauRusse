@@ -76,7 +76,7 @@ body {
 .description {
     text-align: center;
     margin: auto;
-    width: 75%;
+    width: 60%;
 }
 
 .contenu {
@@ -158,6 +158,17 @@ body {
 }
 
 .portrait {
-    float:right;
-    height: 50%;
+    position: absolute;
+    top: 200px;
+    left: 28%;
+    max-width: 55%;
+    max-height: 50%;
+}
+
+.photo-accueil {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40%;
+    max-height: 10%;
 }

@@ -2,7 +2,7 @@
 {%block corps%}
 <h1>Écrivains</h1>
 
-<form class="suppression" action="{{ url_for('ajout_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
+<form class="suppression" action="{{ url_for('ajout_ecrivain') }}" method="post">
     <div class="column">
         <input class="theInputs" type="submit" value="Ajouter">
     </div>
@@ -21,10 +21,10 @@
     </li>
     {% endfor %}
 </ul>
+
 <img class="portrait" src="static/img/portrait groupe.jpg"/>
 
 {%endblock%}
 {%block  titre%}
 {{ecrivains.ecrivain_prenom}} {{ecrivains.ecrivain_nom}}
 {%endblock%}
-
