@@ -7,7 +7,17 @@
     </h1>
 </div>
 
+<<<<<<< HEAD
 <img class="photo-ecrivain" src="{{ image }}"></img>
+=======
+<img src="{{ image }}"></img>
+
+<form class="suppression" action="{{ url_for('supprimer_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Supprimer">
+    </div>
+</form>
+>>>>>>> 40e920e (Ajout de contenu et reparations)
 
 <h2>
     Année de naissance
