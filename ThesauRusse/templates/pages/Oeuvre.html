@@ -4,6 +4,12 @@
     Oeuvre
 </h1>
 
+<form class="suppression" action="{{ url_for('supprimer_oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}" method="post">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Supprimer">
+    </div>
+</form>
+
 <h2>
     Informations
 </h2>

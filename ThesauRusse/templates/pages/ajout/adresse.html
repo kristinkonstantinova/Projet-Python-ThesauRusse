@@ -1,18 +1,55 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 
-<form>
-    <h4>Rue</h4>
-    <label for="rue"></label><br>
-    <input type="text" id="rue" name="Rue"<br>
-    <h4>Ville</h4>
-    <label for="ville"></label><br>
-    <input type="text" id="ville" name="Ville"<br>
-    <h4>Arrondissement</h4>
-    <label for="arrondissement"></label><br>
-    <input type="number" min="1" max="20" id="arrondissement" name="Arrondissement"<br>
+<h1>Ajouter une adresse</h1>
 
-</form>
+<div id="formContainer" class="contenu">
+    <form id="formC" action="{{ url_for('envoi_adresse') }}" method="post">
+        <div class="rows">
+            <div class="column">
+                <label class="theLabels" for="rue">
+                    Rue
+                </Label>
+                <input class="theInputs" type="text" id="rue" name="rue" placeholder="rue">
+            </div>
+
+            <div class="column">
+                <label class="theLabels" for="commune">
+                    Commune
+                </label>
+                <input class="theInputs" type="text" id="commune" name="commune" placeholder="commune">
+            </div>
+
+            <div class="column">
+                <label class="theLabels" for="arrondissement">
+                    Arrondissement
+                </label>
+                <input class="theInputs" list="arrondissements" id="arrondissement" name="arrondissement" placeholder="arrondissement">
+                <datalist id="arrondissements">
+                    {% for arrondissement in range(1, 21) %}
+                    <option value="{{ arrondissement }}">
+                    {%endfor%}
+                </datalist>
+            </div>
+
+            <div class="column">
+                <label class="theLabels" for="annee">
+                    Année
+                </label>
+                <input class="theInputs" list="annees" id="date" name="date" placeholder="année">
+                <datalist id="annees">
+                    {% for annee in range(1800, 1951) %}
+                    <option value="{{ annee }}">
+                        {%endfor%}
+                </datalist>
+            </div>
+
+            <div class="column">
+                <input class="theInputs" type="submit" value="Envoyer">
+            </div>
+        </div>
+    </form>
+</div>
 {%endblock%}
 
 {%block titre%}

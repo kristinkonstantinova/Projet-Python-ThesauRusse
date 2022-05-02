@@ -1,12 +1,18 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 <h1>Adresse</h1>
+
+<form class="suppression" action="{{ url_for('supprimer_adresse', adresse_id=adresse.adresse_id) }}" method="post">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Supprimer">
+    </div>
+</form>
+
 <h2>Informations</h2>
 <h3>Adresse</h3>
 <ul>
     <li>
-        {{adresse.adresse_rue}}
-        , {{adresse.adresse_commune}}
+        {{adresse.adresse_rue}}, {{adresse.adresse_commune}}
         {%if adresse.adresse_arrondissement%}
         {{adresse.adresse_arrondissement}}
         {%endif%}

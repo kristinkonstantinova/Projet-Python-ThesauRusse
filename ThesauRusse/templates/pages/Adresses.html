@@ -1,6 +1,13 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 <h1>Adresse</h1>
+
+<form class="suppression" action="{{ url_for('ajout_adresse') }}">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Ajouter">
+    </div>
+</form>
+
 <h2>Liste</h2>
 <ul>
     {% for adresse in adresses %}

@@ -93,9 +93,48 @@ def supprimer_ecrivain(ecrivain_id):
 def ajout_oeuvre():
     return render_template("pages/ajout/oeuvre.html")
 
+@app.route("/envoi/oeuvre", methods=['POST'])
+def envoi_oeuvre():
+    e = Oeuvre(
+        oeuvre_titre_russe=request.form['titre_russe'],
+        oeuvre_titre_francais=request.form['titre_francais'],
+        oeuvre_date=request.form['date']
+    )
+    db.session.add(e)
+    db.session.commit()
+
+    return redirect(url_for('oeuvre', oeuvre_id=e.oeuvre_id))
+
+@app.route("/supprimer/oeuvre/<int:oeuvre_id>", methods=['POST'])
+def supprimer_oeuvre(oeuvre_id):
+    db.session.delete(Oeuvre.query.get(oeuvre_id))
+    db.session.commit()
+
+    return redirect(url_for('oeuvres'))
+
 @app.route("/ajout/adresse")
 def ajout_adresse():
     return render_template("pages/ajout/adresse.html")
+
+@app.route("/envoi/adresse", methods=['POST'])
+def envoi_adresse():
+    e = Adresse(
+        adresse_rue=request.form['rue'],
+        adresse_commune=request.form['commune'],
+        adresse_arrondissement=request.form.get('arrondissement'),
+        adresse_date=request.form['date']
+    )
+    db.session.add(e)
+    db.session.commit()
+
+    return redirect(url_for('adresse', adresse_id=e.adresse_id))
+
+@app.route("/supprimer/adresse/<int:adresse_id>", methods=['POST'])
+def supprimer_adresse(adresse_id):
+    db.session.delete(Adresse.query.get(adresse_id))
+    db.session.commit()
+
+    return redirect(url_for('adresses'))
 
 @app.route("/recherche")
 def recherche():

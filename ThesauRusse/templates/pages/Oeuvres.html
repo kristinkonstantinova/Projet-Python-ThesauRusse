@@ -1,13 +1,19 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 <h1>Oeuvres</h1>
+
+<form class="suppression" action="{{ url_for('ajout_oeuvre') }}">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Ajouter">
+    </div>
+</form>
+
 <h2>Liste</h2>
 <ul>
     {% for oeuvre in oeuvres %}
     <li>
         <a href="{{ url_for('oeuvre', oeuvre_id=oeuvre.oeuvre_id) }}">
-            {{ oeuvre.oeuvre_titre_russe }}
-            , {{ oeuvre.oeuvre_titre_francais }}
+            {{ oeuvre.oeuvre_titre_russe }}, {{ oeuvre.oeuvre_titre_francais }}
             ({{oeuvre.oeuvre_date}})
         </a>
     </li>

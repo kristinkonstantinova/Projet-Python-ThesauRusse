@@ -1,18 +1,40 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 
-<form>
-    <h4>Titre Francais</h4>
-    <label for="francais"></label><br>
-    <input type="text" id="francais" name="Francais"<br>
-    <h4>Titre Russe</h4>
-    <label for="russe"></label><br>
-    <input type="text" id="russe" name="Russe"<br>
-    <h4>Date</h4>
-    <label for="date"></label><br>
-    <input type="number" min="1800" max="1950" id="date" name="Date"<br>
+<div id="formContainer" class="contenu">
+    <form id="formC" action="{{ url_for('envoi_oeuvre') }}" method="post">
+        <div class="rows">
+            <div class="column">
+                <label class="theLabels" for="titre_russe">
+                    Titre Russe
+                </label>
+                <input class="theInputs" type="text" id="titre_russe" name="titre_russe" placeholder="titre russe">
+            </div>
 
-</form>
+            <div class="column">
+                <label class="theLabels" for="nom">
+                    Titre Français
+                </label>
+                <input class="theInputs" type="text" id="titre_francais" name="titre_francais" placeholder="titre_francais">
+            </div>
+
+            <div class="column">
+                <label class="theLabels" for="annees">
+                    Année
+                </label>
+                <input class="theInputs" list="annees" id="date" name="date" placeholder="année">
+                <datalist id="annees">
+                    {% for annee in range(1800, 1951) %}
+                    <option value="{{ annee }}">
+                    {%endfor%}
+                </datalist>
+            </div>
+            <div class="column">
+                <input class="theInputs" type="submit" value="Envoyer">
+            </div>
+        </div>
+    </form>
+</div>
 {%endblock%}
 
 {%block titre%}

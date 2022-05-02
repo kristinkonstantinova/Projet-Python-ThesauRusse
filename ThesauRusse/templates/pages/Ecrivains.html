@@ -1,6 +1,13 @@
 {% extends "conteneur.html" %}
 {%block corps%}
 <h1>Écrivains</h1>
+
+<form class="suppression" action="{{ url_for('ajout_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Ajouter">
+    </div>
+</form>
+
 <h2>Liste</h2>
 <ul>
     {% for ecrivain in ecrivains %}
