@@ -5,6 +5,7 @@ from flask import render_template, Flask, request
 from .modeles.donnees import Ecrivain, Adresse, Oeuvre
 from .app import app, db
 from sqlalchemy import or_
+import os
 
 
 @app.route("/")
@@ -28,7 +29,8 @@ def ecrivains():
 @app.route("/ecrivain/<int:ecrivain_id>")
 def ecrivain(ecrivain_id):
     resultats_ecrivain = Ecrivain.query.get(ecrivain_id)
-    return render_template("pages/Ecrivain.html", ecrivain=resultats_ecrivain)
+    image = "img/" + resultats_ecrivain.ecrivain_prenom.lower() + " " + resultats_ecrivain.ecrivain_nom.lower() + ".jpg"
+    return render_template("pages/Ecrivain.html", ecrivain=resultats_ecrivain, image=url_for('static', filename=image))
 
 @app.route("/oeuvres")
 def oeuvres():

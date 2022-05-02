@@ -5,7 +5,7 @@
 <h2>Écrivains</h2>
 {%for resultat in resultats_ecrivain%}
 <li>
-    <a href="{{ url_for('ecrivain', resultat.ecrivain_id) }}">
+    <a href="{{ url_for('ecrivain', ecrivain_id=resultat.ecrivain_id) }}">
         {{resultat.ecrivain_prenom}} {{resultat.ecrivain_nom}} ({{resultat.ecrivain_date_naissance}} - {{resultat.ecrivain_date_mort}})
     </a>
 </li>
@@ -15,7 +15,7 @@
 <h2>Oeuvres</h2>
 {%for resultat in resultats_oeuvre%}
 <li>
-    <a href="{{ url_for('oeuvre', resultat.oeuvre_id) }}">
+    <a href="{{ url_for('oeuvre', oeuvre_id=resultat.oeuvre_id) }}">
         {{resultat.oeuvre_titre_russe}}, {{resultat.oeuvre_titre_francais}} ({{resultat.oeuvre_date}})
     </a>
 </li>

@@ -5,14 +5,14 @@
         {{ecrivain.ecrivain_prenom}}
         {{ecrivain.ecrivain_nom}}
     </h1>
-    <div class="suppression">
-        <form action="{{ url_for('supprimer_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
-            <div class="column">
-                <input class="theInputs" type="submit" value="Supprimer">
-            </div>
-        </form>
-    </div>
 </div>
+
+<img src="{{ image }}"></img>
+<form class="suppression" action="{{ url_for('supprimer_ecrivain', ecrivain_id=ecrivain.ecrivain_id) }}" method="post">
+    <div class="column">
+        <input class="theInputs" type="submit" value="Supprimer">
+    </div>
+</form>
 
 <h2>
     Année de naissance
