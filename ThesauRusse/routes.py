@@ -56,6 +56,19 @@ def adresse(adresse_id):
 def ajout_ecrivain():
     return render_template("pages/ajout/ecrivain.html")
 
+@app.route("/index")
+def index():
+    adresses = Adresse.query.order_by(Adresse.adresse_id.desc()).all()
+    ecrivains = Ecrivain.query.order_by(Ecrivain.ecrivain_id.desc()).all()
+    oeuvres = Oeuvre.query.order_by(Oeuvre.oeuvre_id.desc()).all()
+    return render_template(
+        "pages/Index.html",
+        adresses=adresses,
+        ecrivains=ecrivains,
+        oeuvres=oeuvres
+    )
+
+
 @app.route("/envoi/ecrivain", methods=['POST'])
 def envoi_ecrivain():
     e = Ecrivain(
