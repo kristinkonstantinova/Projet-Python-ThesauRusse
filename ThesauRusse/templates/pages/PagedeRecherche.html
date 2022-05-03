@@ -25,7 +25,7 @@
 <h2>Adresses</h2>
 {%for resultat in resultats_adresse%}
 <li>
-    <a href="{{ url_for('adresse', resultat.adresse_id) }}">
+    <a href="{{ url_for('adresse', adresse_id=resultat.adresse_id) }}">
         {%if resultat.adresse_arrondissement%}
         {{resultat.adresse_rue}}, {{resultat.adresse_commune}}, {{resultat.adresse_arrondissement}}, {{resultat.adresse_date}}
         {%else%}
